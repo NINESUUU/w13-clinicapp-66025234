@@ -7,7 +7,15 @@ import { getSqlPool } from './db.js';
 // ... โค้ดส่วนอื่นๆ ...
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://zealous-meadow-057bf9100.2.azurestaticapps.net',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
