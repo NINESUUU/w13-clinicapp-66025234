@@ -4,18 +4,20 @@ import cors from 'cors';
 import sql from 'mssql';
 import { getSqlPool } from './db.js';
 
-// ... โค้ดส่วนอื่นๆ ...
-
 const app = express();
+
+// อนุญาต Domain ทั้ง Static Web App และ App Service
 app.use(cors({
   origin: [
     'https://zealous-meadow-057bf9100.2.azurestaticapps.net',
+    'https://app-clinicapp-api-66025234-ctfhhgedezh9g0as.japaneast-01.azurewebsites.net',
     'http://localhost:5173',
     'http://localhost:3000'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
