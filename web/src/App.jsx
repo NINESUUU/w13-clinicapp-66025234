@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_BASE = window.location.hostname === 'localhost'
-  ? 'http://localhost:8080'
-  : 'https://app-clinicapp-api-66025234-ctfhhgedezh9g0as.japaneast-01.azurewebsites.net';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 export default function App() {
   const [rooms, setRooms] = useState([]);
